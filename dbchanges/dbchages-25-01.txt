@@ -1,0 +1,48 @@
+ALTER TABLE client_details ADD client_folder_id VARCHAR(255) NULL DEFAULT NULL AFTER country_id;
+
+ALTER TABLE companies ADD company_folder_id VARCHAR(255) NULL DEFAULT NULL AFTER default_task_status;
+
+ALTER TABLE `projects` ADD `project_folder_id` VARCHAR(255) NOT NULL AFTER `status`;
+ALTER TABLE `projects` CHANGE `project_folder_id` `project_folder_id` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+
+ALTER TABLE `project_files` ADD `fileid` VARCHAR(300) NOT NULL AFTER `external_link`;
+ALTER TABLE `project_files` CHANGE `fileid` `fileid` VARCHAR(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+
+ALTER TABLE events ADD event_id VARCHAR(255) NOT NULL AFTER updated_at;
+
+LTER TABLE events CHANGE cal_event_id cal_event_id VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE projects ADD cal_event_id VARCHAR(255) NULL DEFAULT NULL AFTER project_folder_id;
+ALTER TABLE tasks ADD cal_event_id VARCHAR(255) NULL DEFAULT NULL AFTER estimate_minutes;
+
+ALTER TABLE users ADD sync_token VARCHAR(255) NOT NULL AFTER access_token;
+
+ALTER TABLE users CHANGE sync_token sync_token VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE events CHANGE description description MEDIUMTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE invoices ADD irpf INT(11) NOT NULL AFTER created_by;
+
+ALTER TABLE invoices CHANGE irpf irpf INT(11) NULL DEFAULT NULL;
+
+ALTER TABLE users ADD refresh_token VARCHAR(255) NOT NULL AFTER sync_token;
+
+ALTER TABLE users CHANGE refresh_token refresh_token VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE users CHANGE refresh_token refresh_token VARCHAR(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE users ADD cal_ref_token VARCHAR(1000) NOT NULL AFTER refresh_token;
+
+ALTER TABLE offline_invoices ADD irpf INT(11) NOT NULL AFTER updated_at;
+
+ALTER TABLE `companies` ADD `id_number` VARCHAR(255) NOT NULL AFTER `company_folder_id`;
+
+ALTER TABLE `companies` CHANGE `id_number` `id_number` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE `client_details` ADD `id_number` VARCHAR(255) NULL DEFAULT NULL AFTER `client_folder_id`;
+
+
+
+
